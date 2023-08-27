@@ -1,0 +1,30 @@
+.main {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.todos {
+  margin: 0 auto;
+  max-width: 414px;
+  border-radius: 25px;
+  background: linear-gradient(
+    223deg,
+    #2a2a2e 10.56%,
+    #2b125a 46.68%,
+    #000 84.58%
+  );
+  padding: 15px;
+}
+.todos__header {
+}
+.todos__home {
+  display: block;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 auto;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    color: #f8de22;
+  }
+}
