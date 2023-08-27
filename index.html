@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Pokemon</title>
+    <title>Todos</title>
   </head>
   <body>
     <header class="header"></header>
@@ -23,9 +23,43 @@
           <div class="todos__header">
             <a href="/index.html" class="todos__home"> today </a>
           </div>
-          <form class="todos__search">
-            <input type="text" placeholder="search note" />
+          <form class="todos__form">
+            <input
+              class="todos__search"
+              type="text"
+              placeholder="search note"
+            />
           </form>
+          <div class="todos__body">
+            <ul class="todos__list">
+              <li class="todos__item item">
+                <p class="item__text">
+                  this morning's meeting, we have to improve the quality of
+                  office facilities and another...
+                </p>
+                <div class="item__wrapper">
+                  <span class="item__date">28/10/2012</span>
+                  <div class="item__inner">
+                    <span class="item__edit"></span>
+                    <span class="item__delete"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="todos__item item">
+                <p class="item__text">
+                  this morning's meeting, we have to improve the quality of
+                  office facilities and another...
+                </p>
+                <div class="item__wrapper">
+                  <span class="item__date">28/10/2012</span>
+                  <div class="item__inner">
+                    <span class="item__edit"></span>
+                    <span class="item__delete"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </main>
