@@ -74,7 +74,7 @@
 .item__wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 .item__date {
   display: inline-block;
@@ -86,25 +86,35 @@
   display: inline-flex;
   width: 40px;
   justify-content: space-between;
-  gap: 15px;
 }
 .item__edit {
   display: inline-block;
-  max-width: 12px;
-  width: 100%;
-  height: 12px;
+  width: 17px;
+  background-color: transparent;
+  height: 17px;
   background-image: url("https://cdn-icons-png.flaticon.com/128/5972/5972923.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 15px;
+  background-size: cover;
 }
 .item__delete {
   display: inline-block;
-  max-width: 12px;
-  width: 100%;
-  height: 12px;
+  width: 17px;
+  background-color: transparent;
+  height: 17px;
   background-image: url("https://cdn-icons-png.flaticon.com/128/4442/4442016.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 15px;
+  background-size: cover;
 }
+
+// .item__delete {
+//   display: inline-block;
+//   max-width: 14px;
+//   width: 100%;
+//   height: 14px;
+//   background-image: url("https://cdn-icons-png.flaticon.com/128/4442/4442016.png");
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: 15px;
+// }
