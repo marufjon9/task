@@ -6,21 +6,21 @@ const modalForm = document.querySelector(".modal-form");
 const todosSearch = document.querySelector(".todos__search");
 
 let todos = [
-  // {
-  //   id: 1,
-  //   todo: "Wake up early",
-  //   date: "28/10/2012",
-  // },
-  // {
-  //   id: 2,
-  //   todo: "Morning workout",
-  //   date: "28/10/2012",
-  // },
-  // {
-  //   id: 3,
-  //   todo: "Take a shower",
-  //   date: "28/10/2012",
-  // },
+  {
+    id: 1,
+    todo: "this morning's meeting, we have to improve the quality of office facilities and another...",
+    date: "28/10/2012",
+  },
+  {
+    id: 2,
+    todo: "need for this month: -clothes -snack...",
+    date: "28/10/2012",
+  },
+  {
+    id: 3,
+    todo: "Message from Liam: Don't forget to complete assignments on Tuesday",
+    date: "28/10/2012",
+  },
 ];
 
 function renderTodos(array) {
@@ -87,7 +87,11 @@ modalForm.addEventListener("submit", (e) => {
 
   todos.push(newTodo);
   renderTodos(todos);
-  modal.classList.add("no-display");
+  addInput.classList.toggle("show");
+  addBtn.classList.toggle("rotate");
+  modal.classList.toggle("no-display");
+
+  addInput.value = "";
 });
 
 list.addEventListener("click", (e) => {
