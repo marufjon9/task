@@ -188,7 +188,7 @@
 }
 
 .no-display {
-  opacity: 0;
+  display: none;
 }
 
 @media only screen and (min-width: 375px) {
@@ -259,16 +259,16 @@
   }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 1912px) {
   .todos__add {
     transform: translate(276%, -38%);
   }
   .modal {
-    max-width: 400px;
-    max-height: 546px;
+    max-width: 408px;
+    max-height: 540px;
     width: 100%;
     height: 100%;
-    left: 40%;
-    top: 8%;
+    left: 39.5%;
+    top: 12%;
   }
 }
