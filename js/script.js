@@ -2,46 +2,29 @@ const list = document.querySelector(".todos__list");
 const addInput = document.querySelector(".add__input");
 const addBtn = document.querySelector(".add__btn");
 const modal = document.querySelector(".modal");
+const modalForm = document.querySelector(".modal-form");
+const todosSearch = document.querySelector(".todos__search");
 
 let todos = [
-  {
-    id: 1,
-    todo: "Wake up early",
-    date: "28/10/2012",
-  },
-  {
-    id: 2,
-    todo: "Morning workout",
-    date: "28/10/2012",
-  },
-  {
-    id: 3,
-    todo: "Take a shower",
-    date: "28/10/2012",
-  },
-  {
-    id: 3,
-    todo: "Take a shower",
-    date: "28/10/2012",
-  },
-  {
-    id: 3,
-    todo: "Take a shower",
-    date: "28/10/2012",
-  },
-  {
-    id: 3,
-    todo: "Take a shower",
-    date: "28/10/2012",
-  },
-  {
-    id: 3,
-    todo: "Take a shower",
-    date: "28/10/2012",
-  },
+  // {
+  //   id: 1,
+  //   todo: "Wake up early",
+  //   date: "28/10/2012",
+  // },
+  // {
+  //   id: 2,
+  //   todo: "Morning workout",
+  //   date: "28/10/2012",
+  // },
+  // {
+  //   id: 3,
+  //   todo: "Take a shower",
+  //   date: "28/10/2012",
+  // },
 ];
 
 function renderTodos(array) {
+  list.innerHTML = "";
   array.forEach((element) => {
     const li = document.createElement("li");
     li.classList.add("todos__item");
@@ -62,9 +45,11 @@ function renderTodos(array) {
 
     const itemEdit = document.createElement("span");
     itemEdit.classList.add("item__edit");
+    itemEdit.dataset.id = element.id;
 
     const itemDelete = document.createElement("span");
     itemDelete.classList.add("item__delete");
+    itemDelete.dataset.id = element.id;
 
     itemInner.append(itemEdit, itemDelete);
     itemWrapper.append(itemDate, itemInner);
@@ -81,3 +66,62 @@ addBtn.addEventListener("click", (e) => {
 });
 
 renderTodos(todos);
+
+modalForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const addInputValue = addInput.value.trim();
+
+  const date = new Date();
+  const day = date.getDate();
+  const month = (date.getMonth() + 1).toString().padStart("2", "0");
+  const year = date.getFullYear();
+
+  const today = `${day}/${month}/${year}`;
+
+  const newTodo = {
+    id: todos.length ? todos.length + 1 : 1,
+    todo: addInputValue,
+    date: today,
+  };
+
+  todos.push(newTodo);
+  renderTodos(todos);
+  modal.classList.add("no-display");
+});
+
+list.addEventListener("click", (e) => {
+  if (e.target.matches(".item__delete")) {
+    const deleteId = e.target.dataset.id;
+    const foundObject = todos.findIndex((item) => {
+      return (item.id = deleteId);
+    });
+    todos.splice(foundObject, 1);
+    renderTodos(todos);
+  }
+
+  if (e.target.matches(".item__edit")) {
+    let editValue = prompt("Enter your edit value");
+
+    const edit = e.target.dataset.id;
+
+    const foundItem = todos.find((element) => {
+      return element.id == edit;
+    });
+    foundItem.todo = editValue;
+    renderTodos(todos);
+  }
+});
+
+todosSearch.addEventListener("keyup", (e) => {
+  list.innerHTML = "";
+
+  const todosSearchValue = todosSearch.value.trim().toLowerCase();
+
+  const searchValue = todos.filter((element) => {
+    const searchName = element.todo.toLowerCase();
+    return searchName.includes(todosSearchValue);
+  });
+
+  renderTodos(searchValue);
+});
