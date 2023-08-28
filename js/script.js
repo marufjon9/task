@@ -1,6 +1,7 @@
 const list = document.querySelector(".todos__list");
 const addInput = document.querySelector(".add__input");
 const addBtn = document.querySelector(".add__btn");
+const modal = document.querySelector(".modal");
 
 let todos = [
   {
@@ -11,6 +12,26 @@ let todos = [
   {
     id: 2,
     todo: "Morning workout",
+    date: "28/10/2012",
+  },
+  {
+    id: 3,
+    todo: "Take a shower",
+    date: "28/10/2012",
+  },
+  {
+    id: 3,
+    todo: "Take a shower",
+    date: "28/10/2012",
+  },
+  {
+    id: 3,
+    todo: "Take a shower",
+    date: "28/10/2012",
+  },
+  {
+    id: 3,
+    todo: "Take a shower",
     date: "28/10/2012",
   },
   {
@@ -56,6 +77,7 @@ function renderTodos(array) {
 addBtn.addEventListener("click", (e) => {
   addInput.classList.toggle("show");
   addBtn.classList.toggle("rotate");
+  modal.classList.toggle("no-display");
 });
 
 renderTodos(todos);
