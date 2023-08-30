@@ -5,23 +5,24 @@ const modal = document.querySelector(".modal");
 const modalForm = document.querySelector(".modal-form");
 const todosSearch = document.querySelector(".todos__search");
 
-let todos = [
-  {
-    id: 1,
-    todo: "this morning's meeting, we have to improve the quality of office facilities and another...",
-    date: "28/10/2012",
-  },
-  {
-    id: 2,
-    todo: "need for this month: -clothes -snack...",
-    date: "28/10/2012",
-  },
-  {
-    id: 3,
-    todo: "Message from Liam: Don't forget to complete assignments on Tuesday",
-    date: "28/10/2012",
-  },
-];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+// [
+// {
+//   id: 1,
+//   todo: "this morning's meeting, we have to improve the quality of office facilities and another...",
+//   date: "28/10/2012",
+// },
+// {
+//   id: 2,
+//   todo: "need for this month: -clothes -snack...",
+//   date: "28/10/2012",
+// },
+// {
+//   id: 3,
+//   todo: "Message from Liam: Don't forget to complete assignments on Tuesday",
+//   date: "28/10/2012",
+// },
+// ];
 
 function renderTodos(array) {
   list.innerHTML = "";
@@ -86,6 +87,9 @@ modalForm.addEventListener("submit", (e) => {
   };
 
   todos.push(newTodo);
+
+  localStorage.setItem("todos", JSON.stringify(todos));
+
   renderTodos(todos);
   addInput.classList.toggle("show");
   addBtn.classList.toggle("rotate");
@@ -98,9 +102,11 @@ list.addEventListener("click", (e) => {
   if (e.target.matches(".item__delete")) {
     const deleteId = e.target.dataset.id;
     const foundObject = todos.findIndex((item) => {
-      return (item.id = deleteId);
+      return item ? (item.id = deleteId) : (item.id = todos.id);
     });
     todos.splice(foundObject, 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+
     renderTodos(todos);
   }
 
